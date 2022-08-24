@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <title>Curso Básico de PHP: Instalación, Fundamentos y Operadores</title>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1>Curso Básico de PHP: Instalación, Fundamentos y Operadores</h1>
+    </header>
+    <main class="container">
+
+        <hr>
+        <section class="row">
+            <article class="col">
+                <h2>Sección 1 de 24 - Cómo aprender a programar</h2>
+
+            </article>
+        </section>
+
+        <hr>
+        <section class="row">
+            <article class="col">
+                <h2>Sección 2 de 24 - ¿PHP está muerto?</h2>
+
+            </article>
+        </section>
+
+        <hr>
+        <section class="row">
+            <article class="col">
+                <h2>Sección 3 de 24 - Cómo interactúa una página web con tu backend</h2>
+
+            </article>
+        </section>
+
+        <hr>
+        <section class="row">
+            <article class="col">
+                <h2>Sección 4 de 24 - Instalación de PHP en Windows</h2>
+                <p>XAMPP - <a href="https://www.apachefriends.org/download.html" target="_blank"
+                        rel="noopener noreferrer">https://www.apachefriends.org/download.html</a></p>
+            </article>
+        </section>
+
+        <hr>
+
+        <section class="row">
+            <article class="col">
+                <h2>Sección 5 de 24 - Instalación de PHP en Linux</h2>
+                <pre class="prettyprint">
+
+                sudo add-apt-repository ppa:ondrej/php
+                sudo apt update
+                sudo apt upgrade
+                sudo apt install php8.0 apache2
+                sudo apt install php7.4
+                sudo dpkg --get-selections | grep php
+                php7.4 --version
+                php8.0 --version
+                php --version
+                sudo a2enmod php8.0
+                sudo a2dismod php8.0
+                sudo a2enmod php7.4
+                systemctl restart apache2
+
+                cd /var/www/html
+                sudo rm index.html
+                touch index.php
+                nano index.php
+            </pre>
+
+                <p>En navegador abrir <a href="http://localhost" target="_blank" rel="noopener noreferrer">localhost</a>
+                </p>
+
+                <pre class="prettyprint">
+
+                sudo a2dismod php7.4
+                sudo a2enmod php8.0
+                systemctl restart apache2
+            </pre>
+
+                <pre class="prettyprint">
+
+                sudo nano /etc/php/8.0/apache2/php.ini
+
+                // buscar display_errors = On
+            </pre>
+
+                <pre class="prettyprint">
+
+                sudo apt install libapache2-mod-php8.0
+            </pre>
+
+                <pre class="prettyprint">
+
+                php -a
+            </pre>
+            </article>
+        </section>
+
+        <hr>
+
+        <section class="row">
+            <article class="col">
+                <h2>Sección 6 de 24 - Instalción de PHP en macOS</h2>
+                <pre class="prettyprint">
+
+                // instalar homebrew antes
+                brew install curl
+                brew install httpd php@8.1 php@7.4
+                brew unlink php
+                brew link --force php@8.1
+                php --version
+            </pre>
+
+                <div class="Resources-description">
+                    <p>Ubicación del archivo <code>httpd.conf</code>:</p>
+                    <ul>
+                        <li>Ubicación en <strong>Intel</strong>: <code>sudo nano /usr/local/etc/httpd/httpd.conf</code>
+                        </li>
+                        <li>Ubicación en <strong>M1</strong>: <code>sudo nano /opt/homebrew/etc/httpd/httpd.conf</code>
+                        </li>
+                    </ul>
+                    <p>Módulo de <code>libphp.so</code>:</p>
+                    <ul>
+                        <li>Para <strong>Intel</strong>:
+                            <code>LoadModule php_module /usr/local/opt/php/lib/httpd/modules/libphp.so</code></li>
+                        <li>Para <strong>M1</strong>:
+                            <code>LoadModule php_module /opt/homebrew/opt/php/lib/httpd/modules/libphp.so</code></li>
+                    </ul>
+                </div>
+            </article>
+
+            <pre class="prettyprint">
+                    
+                Habilitar el Listen 80, si no está habilitado
+                Editar nuestro DocumentRoot
+                Editar $ltDirectory
+
+                AllowOverride All
+
+                LoadModule // Esto dependiendo si es Intel o M1
+
+                Descomentar el 
+                LoadModule rewrite_module ...
+
+                Agregar index.php en
+                DirectoryIndex
+
+                // tambien
+                ServerName localhost
+            </pre>
+
+            <pre class="prettyprint">
+                    
+                brew services restart php
+                sudo apachectl -k start
+            </pre>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 7 de 24 - Hackea tu miedo a la terminal</h2>
+            <pre class="prettyprint">
+                    
+                php -a
+                php index.php
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 8 de 24 - Cómo ejecutar tus archivos PHP</h2>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 9 de 24 - Sintaxis básica de PHP</h2>
+            <pre class="prettyprint">
+                    
+            &lt?php
+
+                echo "Hola, mamá. Estoy programando";
+                echo "&ltbr>";
+            
+                $nombre = "Alexander";
+                $apellido = "Diaz";
+            
+                // Concatenando
+                echo "Yo me llamo " . $nombre . " " . $apellido;
+                echo "&ltbr>";
+                // Sin concatenar
+                echo "Yo me llamo $nombre $apellido";
+                echo "&ltbr>";
+                // No funciona si se colocan comillas simples
+                echo 'Yo me llamo $nombre $apellido';
+                echo "&ltbr>";
+                echo "El resultado de 4 x 5 es " . (4 * 5);
+                echo "&ltbr>";
+            
+            ?>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 10 de 24 - Debugging y comentarios</h2>
+            <pre class="prettyprint">
+                    
+            &lt?php
+
+                $personas = [
+                    "Mauricio" => 22,
+                    "Juan" => 21
+                ];
+            
+                var_dump( $personas );
+                print_r( $personas );
+            
+                // comentario
+                # Comentario
+                /*
+                Comentario de mas de una linea
+                */
+            
+            ?>
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 11 de 24 - Variables y Constantes</h2>
+            <pre class="prettyprint">
+                    
+            &lt?php
+
+                $numero_1 = 8;
+                $numero_2 = 7;
+                
+                echo $numero_1 + $numero_2;
+                
+                echo "&ltbr>";
+                
+                define("NUMERO_PI", 3.14);
+                
+                echo NUMERO_PI;
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 12 de 24 - Tipos de datos</h2>
+            <pre class="prettyprint">
+                    
+            &lt?php
+
+                $numerito = 0;
+                
+                var_dump($numerito);
+                echo "&ltbr>";
+                
+                $numerito = "23";
+                
+                var_dump($numerito);
+                echo "&ltbr>";
+                
+                $nuevo_numerito = $numerito + 2;
+                
+                var_dump($nuevo_numerito);
+                echo "&ltbr>";
+                var_dump($numerito);
+                echo "&ltbr>";
+                
+                $numerito = 10;
+                var_dump($numerito);
+                echo "&ltbr>";
+                
+                $numerito = $numerito + 0.5;
+                var_dump($numerito);
+                echo "&ltbr>";
+                
+                $papas = "10 papas en el costal";
+                $cuantas_papas = $papas + 5;
+                
+                echo $cuantas_papas;
+                
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 13 de 24 - ¿Qué es el casting?</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $numerito = "5";
+                
+                var_dump($numerito);
+                
+                echo "&ltbr>";
+                
+                $numerito = (int) $numerito;
+                
+                var_dump($numerito);
+                
+                echo "&ltbr>";
+                
+                $dias = 25.89;
+                
+                var_dump($dias);
+                
+                echo "&ltbr>";
+                
+                $dias = (int) $dias;
+                
+                var_dump($dias);
+                
+                echo "&ltbr>";
+                
+                $banderita = 0;
+                
+                var_dump($banderita);
+                
+                echo "&ltbr>";
+                
+                $banderita = (bool) $banderita;
+                
+                var_dump($banderita);
+                
+                echo "&ltbr>";
+            </pre>
+            <p>
+                RETO
+            </p>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                //Fácil
+                
+                $nombre = "Carlos";
+                var_dump($nombre);
+                echo "&ltbr>";
+                $apellido = "Gómez";
+                var_dump($apellido);
+                echo "&ltbr>";
+                $edad = 18;
+                var_dump($edad);
+                echo "&ltbr>";
+                $aprobado = true;
+                var_dump($aprobado);
+                echo "&ltbr>";
+                
+                //Medio
+                
+                $promedio = (8 + 9.5 + 9 + 10 + 8) / 5;
+                var_dump($promedio);
+                echo "&ltbr>";
+                $nombre_completo = $nombre . " " . $apellido;
+                var_dump($nombre_completo);
+                echo "&ltbr>";
+                $presento_examen = (bool) 1;
+                var_dump($presento_examen);
+                echo "&ltbr>";
+                
+                //Avanzado
+                
+                $numero_preguntas = 5 + "5";
+                var_dump($numero_preguntas);
+                echo "&ltbr>";
+                $numero_respuestas = "5" + 5;
+                var_dump($numero_respuestas);
+                echo "&ltbr>";
+                $promedio_maximo = $numero_respuestas / 1.0;
+                var_dump($promedio_maximo);
+                echo "&ltbr>";
+                $michis = 3 + "5 michis";
+                var_dump($michis);
+                echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 14 de 24 - Reto: análisis de tipado en PHP</h2>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 15 de 24 - Operadores lógicos: ¿qué son las tablas de verdad?</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $michis_felinos = true;
+                $michis_4_patas = true;
+                $michis_vuelan = false;
+                $michis_programan_con_PHP = false;
+                
+                var_dump($michis_felinos && $michis_4_patas);
+                echo "&ltbr>";
+                
+                var_dump($michis_felinos && $michis_vuelan);
+                echo "&ltbr>";
+                
+                var_dump($michis_programan_con_PHP && $michis_felinos);
+                echo "&ltbr>";
+                
+                var_dump($michis_vuelan && $michis_programan_con_PHP);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($michis_felinos and $michis_4_patas);
+                echo "&ltbr>";
+                
+                var_dump($michis_felinos and $michis_vuelan);
+                echo "&ltbr>";
+                
+                var_dump($michis_programan_con_PHP and $michis_felinos);
+                echo "&ltbr>";
+                
+                var_dump($michis_vuelan and $michis_programan_con_PHP);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($michis_felinos || $michis_4_patas);
+                echo "&ltbr>";
+                
+                var_dump($michis_felinos || $michis_vuelan);
+                echo "&ltbr>";
+                
+                var_dump($michis_vuelan || $michis_programan_con_PHP);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump(!$michis_felinos);
+                echo "&ltbr>";
+                
+                var_dump(!$michis_4_patas);
+                echo "&ltbr>";
+                
+                var_dump(!$michis_vuelan);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                $resultado = true and false;
+                var_dump($resultado);
+            </pre>
+            <p>Reto</p>
+            <pre class="prettyprint">
+                    
+                &lt?php
+                // variables
+                $es_un_michi_grande = true;
+                $le_gusta_comer = true;
+                $sabe_volar = false;
+                $tiene_2_patas = false;
+                
+                // resul
+                var_dump($es_un_michi_grande && $le_gusta_comer);
+                echo "&ltbr>";
+                var_dump($es_un_michi_grande || $sabe_volar);
+                echo "&ltbr>";
+                var_dump($sabe_volar || $tiene_2_patas);
+                echo "&ltbr>";
+                var_dump(!$le_gusta_comer);
+                echo "&ltbr>";
+                var_dump(!$le_gusta_comer || $es_un_michi_grande);
+                echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 16 de 24 - Reto: análisis de operadores lógicos</h2>
+            
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 17 de 24 - Operadores Aritmeticos</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $resultado = 5 + 5;
+                echo $resultado;
+                echo "&ltbr>";
+                
+                $resultado = 5 - 5;
+                echo $resultado;
+                echo "&ltbr>";
+                
+                $resultado = 5 ** 3;
+                echo $resultado;
+                echo "&ltbr>";
+                
+                $resultado = (5 * 3) . " " . (80 / 4);
+                echo $resultado;
+                echo "&ltbr>";
+                
+                $resultado = 5 % 2;
+                echo $resultado;
+                echo "&ltbr>";
+                
+                $resultado = 5 / 2;
+                echo $resultado;
+                echo "&ltbr>";
+                
+                $segundos = 7203;
+                echo $segundos . " segundos son " . (int)($segundos / 3600) . " horas";
+                echo "&ltbr>";
+                echo "Sobran " . ($segundos % 3600) . " Segundos";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 18 de 24 - Operadores relacionales</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $a = 5;
+                $b = 5;
+                $b2 = "5";
+                
+                var_dump($a == $b);
+                echo "&ltbr>";
+                
+                var_dump($a == $b2);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($a === $b);
+                echo "&ltbr>";
+                
+                var_dump($a === $b2);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($a != $b);
+                echo "&ltbr>";
+                
+                var_dump($a != $b2);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($a !== $b);
+                echo "&ltbr>";
+                
+                var_dump($a !== $b2);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($a > $b);
+                echo "&ltbr>";
+                
+                var_dump($a &lt $b);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump($a >= $b);
+                echo "&ltbr>";
+                
+                var_dump($a &lt= $b);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                var_dump(1 &lt=> 2);
+                echo "&ltbr>";
+                
+                var_dump(1 &lt=> 1);
+                echo "&ltbr>";
+                
+                var_dump(2 &lt=> 1);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                $edad_de_pepito = 23;
+                echo $edad_de_juanito ?? $edad_de_pepito;
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 19 de 24 - Otros operadores en PHP</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                // Operador de Asignación 
+                $edad_de_jaimito = ($edad_de_pepito = 18 ) + 5 ;
+                echo "la edad de jaimito es $edad_de_jaimito &ltbr>";
+                echo "la edad de pepito es $edad_de_pepito &ltbr>";
+                
+                // incremento
+                
+                $contador = 1;
+                $contador = $contador + 1;
+                $contador += 1;
+                $contador++;
+                
+                echo $contador;
+                
+                echo "&ltbr>";
+                
+                /**
+                 * +=
+                 * -=
+                 * *=
+                 * /=
+                 * .=
+                 */
+                
+                 $nombre = "Alexander";
+                 $nombre .= " Diaz";
+                
+                 echo $nombre;
+                
+                 echo "&ltbr>";
+                
+                 $contador = 1;
+                 $resultado = $contador++;
+                 echo $contador . " " . $resultado;
+                 echo "&ltbr>";
+                 echo "&ltbr>";
+                
+                 $contador = 1;
+                 $resultado = ++$contador;
+                 echo $contador . " " . $resultado;
+                 echo "&ltbr>";
+                 echo "&ltbr>";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 20 de 24 - Precedencia de Operadores</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                // https://www.php.net/manual/en/language.operators.precedence.php
+                $a = 1;
+                $b = $a++;
+                
+                echo $b;
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                // Es 1 porque primero se asigna ($b = $a) despues se hace $a++
+                
+                echo 1 - 2 - 3;
+                echo "&ltbr>";
+                echo 1 - (2 - 3);
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                // La resta tiene asociatividad izquierda
+                
+                $c = 2;
+                $e = $d = $c;
+                
+                echo $e;
+                echo "&ltbr>";
+                echo "&ltbr>";
+                
+                // aqui vemos la asociatividad
+                // Pensariamos que hay un error porque $d no existe
+                // pero la asociatividad de = es right
+                // primero $d = $c
+                // segundo $e = $d
+                
+                $resultado = true and false;
+                
+                var_dump($resultado);
+                
+                // Porque? and tiene asociatividad left
+                // primero $resultado = true
+                // segundo true and false
+                // por eso ya quedó resultado como true
+                
+                echo "&ltbr>";
+                
+                $resultado = (true and false);
+                
+                var_dump($resultado);
+                
+                
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 21 de 24 - Tu primer programa: ¿Qué hora es?</h2>
+            <pre class="prettyprint">
+                    
+                &lt?php
+
+                $segundos = (int) readline("Ingresa el tiempo en segundos: ");
+                
+                $horas = (int) ($segundos / 3600);
+                $segundos = $segundos % 3600;
+                
+                $minutos = (int) ($segundos / 60);
+                $segundos = $segundos % 60;
+                
+                echo "\n";
+                echo "$horas:$minutos:$segundos";
+                echo "\n";
+                
+                
+
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 22 de 24 - Solución del reto: ¿Qué hora es?</h2>
+            <pre class="prettyprint">
+                    
+                $horas = (int) readline("Ingresa el tiempo en horas: ");
+                echo "\n";
+                
+                $minutos = (int) readline("Ingresa el tiempo en minutos: ");
+                echo "\n";
+                
+                $segundos = (int) readline("Ingresa el tiempo en segundos: ");
+                echo "\n";
+                
+                $segundos = $segundos + $minutos * 60 + $horas * 3600;
+                echo "Segundos: $segundos";
+            </pre>
+          </article>
+        </section>
+
+        <hr>
+        
+        <section class="row">
+          <article class="col">
+            <h2>Sección 23 de 24 - ¿quieres un curso basico de php: arreglos, funciones y estructuras de control?</h2>
+            
+          </article>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
